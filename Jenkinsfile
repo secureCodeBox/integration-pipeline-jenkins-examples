@@ -1,16 +1,16 @@
 pipeline {
   agent any
   stages {
-    stage('Nmap Scan') {
-      stage('Download secureCodeBox CLI') {
-        steps {
-          sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/run_scanner.sh'
-          sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
-          sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
-          fileExists 'run_scanner.sh'
-          sh 'chmod +x run_scanner.sh'
-        }
+    stage('Download secureCodeBox CLI') {
+      steps {
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/run_scanner.sh'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
+        fileExists 'run_scanner.sh'
+        sh 'chmod +x run_scanner.sh'
       }
+    }
+    stage('Run Scans') {
       parallel {
         stage('Nmap Scan') {
           steps {
