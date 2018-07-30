@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Download secureCodeBox CLI') {
+    stage('Download CLI') {
       steps {
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/run_scanner.sh'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
