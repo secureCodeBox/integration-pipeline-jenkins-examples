@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Nmap Scan') {
       parallel {
-        stage('Start Nmap Scan') {
+        stage('Nmap Scan') {
           steps {
             sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/run_scanner.sh'
             sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
@@ -16,7 +16,13 @@ pipeline {
         }
         stage('SSLyze Scan') {
           steps {
-            echo 'Hello World'
+            sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/run_scanner.sh'
+            sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
+            fileExists 'run_scanner.sh'
+            sh 'chmod +x run_scanner.sh'
+            sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 sslyze https://iteratec.de:443'
+            sh 'cat job__sslyze_result.readable'
+            archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable'
           }
         }
       }
