@@ -14,17 +14,21 @@ pipeline {
       parallel {
         stage('Nmap Scan') {
           steps {
-            sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 nmap http://localhost'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nmap http://localhost'
             archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable'
           }
         }
         stage('SSLyze Scan') {
           steps {
-            sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 sslyze https://iteratec.de:443'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 sslyze https://iteratec.de:443'
             archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable'
           }
         }
       }
     }
+  }
+  environment {
+    ENGINE_URL = 'http://engine-oss.secure-code-box-jannik-ansible.svc:8080'
+    ELASTIC_URL = 'http://elasticsearch.secure-code-box-jannik-ansible.svc:9200'
   }
 }
