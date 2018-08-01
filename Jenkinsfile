@@ -11,17 +11,19 @@ pipeline {
       }
     }
     stage('Run Scans') {
-      parallel {
-        stage('Nmap Scan') {
-          steps {
-            sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 nmap http://localhost'
-            archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable'
+      steps{
+        parallel {
+          stage('Nmap Scan') {
+            steps {
+              sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 nmap http://localhost'
+              archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable'
+            }
           }
-        }
-        stage('SSLyze Scan') {
-          steps {
-            sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 sslyze https://iteratec.de:443'
-            archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable'
+          stage('SSLyze Scan') {
+            steps {
+              sh './run_scanner.sh -b http://engine-oss.secure-code-box-jannik-ansible.svc:8080 http://elasticsearch.secure-code-box-jannik-ansible.svc:9200 -i 500 -w 2 sslyze https://iteratec.de:443'
+              archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable'
+            }
           }
         }
       }
