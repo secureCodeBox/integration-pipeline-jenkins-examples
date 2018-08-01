@@ -10,7 +10,7 @@ pipeline {
         sh 'chmod +x run_scanner.sh'
       }
     }
-    stage('Nmap Scan') {
+    stage('Run Scans') {
       steps {
         parallel(
           "Nmap Scan": {
