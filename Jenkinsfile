@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage('Download CLI') {
       steps {
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/run_scanner.sh'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/cli-custom-payload/cli/run_scanner.sh'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
         fileExists 'run_scanner.sh'
         sh 'chmod +x run_scanner.sh'
       }
     }
-    stage('Run Scans') {
+    stage('Nmap Scan') {
       steps {
         parallel(
           "Nmap Scan": {
@@ -21,6 +21,11 @@ pipeline {
           "SSLyze Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 sslyze https://iteratec.de:443'
             archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable'
+            
+          },
+          "Custom Arachni Scan": {
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p arachni-scan-quick.json arachni'
+            archiveArtifacts 'job__arachni_result.json,job__arachni_result.readable'
             
           }
         )
