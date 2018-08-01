@@ -10,6 +10,22 @@ pipeline {
         sh 'chmod +x run_scanner.sh'
       }
     }
+    stage('Nmap Scan') {
+      steps {
+        parallel(
+          "Nmap Scan": {
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nmap http://localhost'
+            archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable'
+            
+          },
+          "SSLyze Scan": {
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 sslyze https://iteratec.de:443'
+            archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable'
+            
+          }
+        )
+      }
+    }
   }
   environment {
     ENGINE_URL = 'http://engine-oss.secure-code-box-jannik-ansible.svc:8080'
