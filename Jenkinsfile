@@ -42,7 +42,7 @@ pipeline {
     }
   }
   environment {
-    ENGINE_URL = 'http://engine-oss.secure-code-box-jannik-ansible.svc:8080'
-    ELASTIC_URL = 'http://elasticsearch.secure-code-box-jannik-ansible.svc:9200'
+    ENGINE_URL = 'http://engine-oss.secure-code-box.svc:8080'
+    ELASTIC_URL = 'http://elasticsearch.secure-code-box.svc:9200'
   }
 }
