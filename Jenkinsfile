@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Download CLI') {
       steps {
-        sh 'rm run_scanner.sh'
+        sh 'rm -f run_scanner.sh'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/cli-custom-payload/cli/run_scanner.sh'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
