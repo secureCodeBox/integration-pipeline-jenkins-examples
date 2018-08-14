@@ -1,8 +1,7 @@
 [
     {
         "name": "Quick Arachni Scan",
-        "location":
-            "http://juice-shop.secure-code-box-jannik-ansible.svc:3000/",
+        "location": "http://juice-shop.secure-code-box.svc:3000/",
         "attributes": {
             "ARACHNI_DOM_DEPTH_LIMIT": 5,
             "ARACHNI_DIR_DEPTH_LIMIT": 1,

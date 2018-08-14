@@ -1,11 +1,9 @@
 [
     {
         "name": "Zap BodgeIt Scan",
-        "location":
-            "http://bodgeit.secure-code-box-jannik-ansible.svc:8080/bodgeit/",
+        "location": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
         "attributes": {
-            "ZAP_BASE_URL":
-                "http://bodgeit.secure-code-box-jannik-ansible.svc:8080/bodgeit/",
+            "ZAP_BASE_URL": "http://bodgeit.secure-code-box-jannik-ansible.svc:8080/bodgeit/",
             "ZAP_SPIDER_CONFIGURATION_TYPE": "advanced",
             "ZAP_SCANNER_CONFIGURATION_TYPE": "advanced",
             "ZAP_SPIDER_INCLUDE_REGEX": ".*style\\.css\n.*util\\.js\n.*\\.png",
