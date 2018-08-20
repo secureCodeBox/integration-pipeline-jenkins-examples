@@ -1,7 +1,7 @@
 pipeline {
   agent any
   triggers {
-        cron('H */2 * * *')
+        cron('H */12 * * *')
   }
   stages {
     stage('Download CLI') {
