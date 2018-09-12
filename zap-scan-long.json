@@ -1,10 +1,10 @@
 [
-    {
-        "name": "Zap BodgeIt Scan",
-        "location": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
-        "attributes": {
-            "ZAP_BASE_URL": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
-            "ZAP_SPIDER_MAX_DEPTH": 10
-        }
+  {
+    "name": "Zap BodgeIt Scan",
+    "location": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
+    "attributes": {
+      "ZAP_BASE_URL": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
+      "ZAP_SPIDER_MAX_DEPTH": 10
     }
+  }
 ]
