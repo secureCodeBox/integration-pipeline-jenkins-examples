@@ -11,7 +11,7 @@
         ".*node_modules.*",
         ".*public/images.*",
         ".*/css.*",
-        ".*/?.*"
+        ".*/\\?.*"
       ],
       "ARACHNI_SCAN_METHODS": "*",
       "ARACHNI_EXTEND_PATH": ["/#/administration"]
