@@ -24,7 +24,7 @@ pipeline {
 
           },
           "Run Nikto Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nikto-scan-quick.json'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nikto-scan-quick.json nitko'
             archiveArtifacts 'job_juiceshop_nikto_result.json,job__nmap_nikto.readable'
 
           },
