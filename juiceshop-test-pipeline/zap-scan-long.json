@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Medium ZAP Scan",
+    "location": "http://juice-shop.secure-code-box.svc:3000/",
+    "attributes": {
+      "ZAP_BASE_URL": "http://juice-shop.secure-code-box.svc:3000/",
+      "ZAP_SPIDER_MAX_DEPTH": 5
+    }
+  }
+]
