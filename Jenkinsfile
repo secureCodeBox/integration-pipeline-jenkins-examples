@@ -19,22 +19,22 @@ pipeline {
         parallel(
           "Run Nmap Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nmap $TARGET_HOST'
-            archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable.txt'
+            archiveArtifacts 'job_juiceshop_nmap_result.json,job__nmap_result.readable.txt'
 
           },
           "Run Nikto Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nikto $TARGET_HOST'
-            archiveArtifacts 'job__nikto_result.json,job__nmap_nikto.readable.txt'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nikto $TARGET_URL'
+            archiveArtifacts 'job_juiceshop_nikto_result.json,job__nmap_nikto.readable.txt'
 
           },
           "Run Arachni Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p arachni-scan-quick.json arachni'
-            archiveArtifacts 'job__arachni_result.json,job__arachni_result.readable.txt'
+            archiveArtifacts 'job_juiceshop_arachni_result.json,job__arachni_result.readable.txt'
 
           },
           "Run Zap Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p zap-scan-long.json zap'
-            archiveArtifacts 'job__zap_result.json,job__zap_result.readable.txt'
+            archiveArtifacts 'job_juiceshop_zap_result.json,job__zap_result.readable.txt'
 
           }
         )
@@ -42,7 +42,8 @@ pipeline {
     }
   }
   environment {
-    TARGET_HOST = 'bodgeit.secure-code-box.svc'
+    TARGET_HOST = 'juice-shop.secure-code-box.svc'
+    TARGET_URL = 'http://juice-shop.secure-code-box.svc:3000/'
     ENGINE_URL = 'http://engine-oss.secure-code-box.svc:8080'
     ELASTIC_URL = 'http://elasticsearch.secure-code-box.svc:9200'
   }
