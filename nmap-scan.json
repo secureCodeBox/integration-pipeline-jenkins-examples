@@ -1,0 +1,9 @@
+[
+    {
+        "name": "BodgeIT Scan",
+        "location": "bodgeit.secure-code-box.svc",
+        "attributes": {
+            "NMAP_PARAMETER": "-Pn"
+        }
+    }
+]
