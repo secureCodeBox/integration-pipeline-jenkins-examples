@@ -1,0 +1,9 @@
+[
+	{
+		"name" : "Target",
+    	"location" : "juice-shop.secure-code-box.svc",
+        "attributes" : {
+            "NIKTO_PORTS" : "3000"
+        }
+	}
+]
