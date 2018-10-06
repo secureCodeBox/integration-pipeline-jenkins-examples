@@ -19,7 +19,7 @@ pipeline {
         parallel(
           "Run Nmap Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nmap $TARGET_HOST'
-            archiveArtifacts 'job_juiceshop_nmap_result.json,job__nmap_result.readable.txt'
+            archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable.txt'
 
           }
         )
