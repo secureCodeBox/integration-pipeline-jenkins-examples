@@ -19,7 +19,7 @@ pipeline {
       steps {
         parallel(
           "Run Nmap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 nmap $TARGET_HOST'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nmap-scan-quick.json nmap'
             archiveArtifacts 'job_juiceshop_nmap_result.json,job__nmap_result.readable'
 
           },
