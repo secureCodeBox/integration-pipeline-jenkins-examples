@@ -9,8 +9,6 @@ pipeline {
         sh 'rm -f run_scanner.sh'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/cli-custom-payload/cli/run_scanner.sh'
         sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nikto.template.json'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
         fileExists 'run_scanner.sh'
         sh 'chmod +x run_scanner.sh'
       }
@@ -20,22 +18,22 @@ pipeline {
         parallel(
           "Run Nmap Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nmap-scan.json nmap'
-            archiveArtifacts 'job_juiceshop_nmap_result.json,job__nmap_result.readable'
+            archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable'
 
           },
           "Run Nikto Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nikto-scan-quick.json nikto'
-            archiveArtifacts 'job_juiceshop_nikto_result.json,job__nmap_nikto.readable'
+            archiveArtifacts 'job__nikto_result.json,job__nmap_nikto.readable'
 
           },
           "Run Arachni Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p arachni-scan-quick.json arachni'
-            archiveArtifacts 'job_juiceshop_arachni_result.json,job__arachni_result.readable'
+            archiveArtifacts 'job__arachni_result.json,job__arachni_result.readable'
 
           },
           "Run Zap Scan": {
             sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p zap-scan-long.json zap'
-            archiveArtifacts 'job_juiceshop_zap_result.json,job__zap_result.readable'
+            archiveArtifacts 'job__zap_result.json,job__zap_result.readable'
 
           }
         )
