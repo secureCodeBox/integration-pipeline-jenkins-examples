@@ -32,7 +32,7 @@ pipeline {
 
           },
           "Run Zap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p zap-scan-long.json zap'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p zap-scan-quick.json zap'
             archiveArtifacts 'job__zap_result.json,job__zap_result.readable'
 
           }
