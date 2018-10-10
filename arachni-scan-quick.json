@@ -1,6 +1,6 @@
 [
   {
-    "name": "Quick Arachni Scan",
+    "name": "Quick WebApplication Scan with Arachni",
     "location": "http://juice-shop.secure-code-box.svc:3000/",
     "attributes": {
       "ARACHNI_DOM_DEPTH_LIMIT": 5,

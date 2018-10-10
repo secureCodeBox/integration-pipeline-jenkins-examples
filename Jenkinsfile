@@ -27,7 +27,7 @@ pipeline {
 
           },
           "Run Arachni Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p arachni-scan-quick.json arachni'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p arachni-scan-long.json arachni'
             archiveArtifacts 'job__arachni_result.json,job__arachni_result.readable'
 
           },
