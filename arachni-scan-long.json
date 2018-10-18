@@ -3,7 +3,7 @@
     "name": "In Depth WebApplication Scan with Arachni",
     "location": "http://juice-shop.secure-code-box.svc:3000/",
     "attributes": {
-      "ARACHNI_DOM_DEPTH_LIMIT": 50,
+      "ARACHNI_DOM_DEPTH_LIMIT": 30,
       "ARACHNI_DIR_DEPTH_LIMIT": 10,
       "ARACHNI_PAGE_LIMIT": 100,
       "ARACHNI_EXCLUDE_PATTERNS": [
