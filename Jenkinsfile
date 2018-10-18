@@ -3,6 +3,9 @@ pipeline {
   triggers {
         cron('H */12 * * *')
   }
+  options {
+      timeout(time: 5, unit: 'HOURS')
+  }
   stages {
     stage('Initilize SCB CLI') {
       steps {
@@ -22,12 +25,17 @@ pipeline {
             archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable.txt'
 
           }
+          "Run SSLyze Scan": {
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 sslyze $TARGET_HOST'
+            archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable.txt'
+
+          }
         )
       }
     }
   }
   environment {
-    TARGET_HOST = 'secureCodeBox.io'
+    TARGET_HOST = 'www.secureCodeBox.io'
     TARGET_URL = 'https://www.secureCodeBox.io'
     ENGINE_URL = 'http://engine-oss.secure-code-box.svc:8080'
     ELASTIC_URL = 'http://elasticsearch.secure-code-box.svc:9200'
