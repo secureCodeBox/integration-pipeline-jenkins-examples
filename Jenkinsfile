@@ -3,6 +3,9 @@ pipeline {
   triggers {
         cron('H */12 * * *')
   }
+  options {
+      timeout(time: 5, unit: 'HOURS')
+  }
   stages {
     stage('Initilize SCB CLI') {
       steps {
