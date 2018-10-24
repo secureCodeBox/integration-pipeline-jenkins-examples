@@ -21,12 +21,12 @@ pipeline {
       steps {
         parallel(
           "Run Nmap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -a "`echo $ENGINE_CREDS | base64`" -i 500 -w 2 nmap $TARGET_HOST'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -a "`echo -n $ENGINE_CREDS | base64`" -i 500 -w 2 nmap $TARGET_HOST'
             archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable.txt'
 
           },
           "Run SSLyze Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -a "`echo $ENGINE_CREDS | base64`" -i 500 -w 2 sslyze $TARGET_HOST'
+            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -a "`echo -n $ENGINE_CREDS | base64`" -i 500 -w 2 sslyze $TARGET_HOST'
             archiveArtifacts 'job__sslyze_result.json,job__sslyze_result.readable.txt'
 
           }
