@@ -10,9 +10,9 @@ pipeline {
     stage('Initilize SCB CLI') {
       steps {
         sh 'rm -f run_scanner.sh'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/cli-custom-payload/cli/run_scanner.sh'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/nmap.template.json'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/develop/cli/run_scanner.sh'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/develop/cli/sslyze.template.json'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/develop/cli/nmap.template.json'
         fileExists 'run_scanner.sh'
         sh 'chmod +x run_scanner.sh'
       }
