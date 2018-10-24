@@ -38,7 +38,7 @@ pipeline {
     TARGET_HOST = 'www.secureCodeBox.io'
     TARGET_URL = 'https://www.secureCodeBox.io'
     ENGINE_URL = 'http://engine-oss.secure-code-box.svc:8080'
-    ELASTIC_URL = 'http://elasticsearch.secure-code-box.svc:9200',
+    ELASTIC_URL = 'http://elasticsearch.secure-code-box.svc:9200'
     ENGINE_CREDS = credentials('scb-internal-dev-scanner-jenkins')
   }
 }
