@@ -21,12 +21,12 @@ pipeline {
       steps {
         parallel(
           "Run Nmap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL -a $ENGINE_CREDS -i 120 -w 1 nmap $TARGET_HOST'
+            sh './run_scanner.sh -b $ENGINE_URL -a $ENGINE_CREDS -i 120 -w 1 -n $TARGET_NAME -c $TARGET_NAME nmap $TARGET_HOST'
             archiveArtifacts 'job__nmap_result.json'
 
           },
           "Run SSLyze Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL -a $ENGINE_CREDS -i 120 -w 1 sslyze $TARGET_HOST'
+            sh './run_scanner.sh -b $ENGINE_URL -a $ENGINE_CREDS -i 120 -w 1 -n $TARGET_NAME -c $TARGET_NAME sslyze $TARGET_HOST'
             archiveArtifacts 'job__sslyze_result.json'
 
           }
@@ -36,6 +36,7 @@ pipeline {
   }
   environment {
     TARGET_HOST = 'www.secureCodeBox.io'
+    TARGET_NAME = 'securecodebox.io'
     TARGET_URL = 'https://www.secureCodeBox.io'
     ENGINE_URL = 'http://engine.secure-code-box.svc:8080'
     ENGINE_CREDS = credentials('scb-internal-dev-scanner-jenkins')
