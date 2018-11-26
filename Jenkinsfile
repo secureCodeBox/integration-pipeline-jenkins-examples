@@ -22,12 +22,12 @@ pipeline {
         parallel(
           "Run Nmap Scan": {
             sh './run_scanner.sh -b $ENGINE_URL -a $ENGINE_CREDS -i 120 -w 1 -n $TARGET_NAME -c $TARGET_NAME nmap $TARGET_HOST'
-            archiveArtifacts 'job__nmap_result.json'
+            archiveArtifacts 'job_nmap_result.json'
 
           },
           "Run SSLyze Scan": {
             sh './run_scanner.sh -b $ENGINE_URL -a $ENGINE_CREDS -i 120 -w 1 -n $TARGET_NAME -c $TARGET_NAME sslyze $TARGET_HOST'
-            archiveArtifacts 'job__sslyze_result.json'
+            archiveArtifacts 'job_sslyze_result.json'
 
           }
         )
