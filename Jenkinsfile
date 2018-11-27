@@ -10,7 +10,7 @@ pipeline {
     stage('Initilize SCB CLI') {
       steps {
         sh 'rm -f run_scanner.sh'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/develop/cli/run_scanner.sh'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/6e507db5d51a6fc1a82910b627c8738982344abe/cli/run_scanner.sh'
         fileExists 'run_scanner.sh'
         sh 'chmod +x run_scanner.sh'
       }
