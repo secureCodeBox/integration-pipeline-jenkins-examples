@@ -1,18 +1,26 @@
 [
   {
-    "name": "Quick WebApplication Scan with OWASP ZAP",
-    "location": "http://juice-shop.secure-code-box.svc:3000/",
-    "attributes": {
-      "ZAP_BASE_URL": "http://juice-shop.secure-code-box.svc:3000/",
-      "ZAP_SPIDER_MAX_DEPTH": 2,
-      "ZAP_SPIDER_INCLUDE_REGEX":[],
-      "ZAP_SPIDER_EXCLUDE_REGEX":["http://juice-shop.secure-code-box.svc:3000/.git.*",
-                                  "http://juice-shop.secure-code-box.svc:3000/.svn.*",
-                                  "http://juice-shop.secure-code-box.svc:3000/node_modules.*"],
-      "ZAP_SCANNER_INCLUDE_REGEX":[],
-      "ZAP_SCANNER_EXCLUDE_REGEX":["http://juice-shop.secure-code-box.svc:3000/.git.*",
-                                  "http://juice-shop.secure-code-box.svc:3000/.svn.*",
-                                  "http://juice-shop.secure-code-box.svc:3000/node_modules.*"]
+    "name": "zap",
+    "context": "juiceshop-zap-quick",
+    "target": {
+      "name": "JuiceShop",
+      "location": "http://juice-shop.secure-code-box.svc:3000/",
+      "attributes": {
+        "ZAP_BASE_URL": "http://juice-shop.secure-code-box.svc:3000/",
+        "ZAP_SPIDER_MAX_DEPTH": 2,
+        "ZAP_SPIDER_INCLUDE_REGEX": [],
+        "ZAP_SPIDER_EXCLUDE_REGEX": [
+          "http://juice-shop.secure-code-box.svc:3000/.git.*",
+          "http://juice-shop.secure-code-box.svc:3000/.svn.*",
+          "http://juice-shop.secure-code-box.svc:3000/node_modules.*"
+        ],
+        "ZAP_SCANNER_INCLUDE_REGEX": [],
+        "ZAP_SCANNER_EXCLUDE_REGEX": [
+          "http://juice-shop.secure-code-box.svc:3000/.git.*",
+          "http://juice-shop.secure-code-box.svc:3000/.svn.*",
+          "http://juice-shop.secure-code-box.svc:3000/node_modules.*"
+        ]
+      }
     }
   }
 ]
