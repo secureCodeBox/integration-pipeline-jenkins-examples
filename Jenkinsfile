@@ -19,17 +19,17 @@ pipeline {
       steps {
         parallel(
           "Run Nmap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL -i 500 -w 2 -a $ENGINE_CREDS -p nmap-scan.json'
+            sh './run_scanner.sh -b $ENGINE_URL -i 500 -w 2 -a $ENGINE_CREDS -p nmap-scan.json nmap'
             archiveArtifacts 'job_nmap_result.json'
 
           },
           "Run Nikto Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL -i 500 -w 2 -a $ENGINE_CREDS -p nikto-scan.json'
+            sh './run_scanner.sh -b $ENGINE_URL -i 500 -w 2 -a $ENGINE_CREDS -p nikto-scan.json nikto'
             archiveArtifacts 'job_nikto_result.json'
 
           },
           "Run Arachni Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL -i 50000 -w 2 -a $ENGINE_CREDS -p arachni-scan-quick.json'
+            sh './run_scanner.sh -b $ENGINE_URL -i 50000 -w 2 -a $ENGINE_CREDS -p arachni-scan-quick.json arachni'
             archiveArtifacts 'job_arachni_result.json'
 
           },
