@@ -1,9 +1,13 @@
 [
-	{
-		"name" : "BodgeIT Scan",
-    	"location" : "bodgeit.secure-code-box.svc",
-        "attributes" : {
-            "NIKTO_PORTS" : "8080"
-        }
-	}
+  {
+    "name": "nikto",
+    "context": "bodgeit-nikto-regular",
+    "target": {
+      "name": "BodgeIt",
+      "location": "bodgeit.secure-code-box.svc",
+      "attributes": {
+        "NIKTO_PORTS": "8080"
+      }
+    }
+  }
 ]

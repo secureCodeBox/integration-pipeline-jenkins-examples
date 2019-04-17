@@ -10,8 +10,7 @@ pipeline {
     stage('Initilize SCB CLI') {
       steps {
         sh 'rm -f run_scanner.sh'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/cli-custom-payload/cli/run_scanner.sh'
-        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/cli/sslyze.template.json'
+        sh 'wget https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/6e507db5d51a6fc1a82910b627c8738982344abe/cli/run_scanner.sh'
         fileExists 'run_scanner.sh'
         sh 'chmod +x run_scanner.sh'
       }
@@ -20,23 +19,23 @@ pipeline {
       steps {
         parallel(
           "Run Nmap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nmap-scan.json nmap '
-            archiveArtifacts 'job__nmap_result.json,job__nmap_result.readable'
+            sh './run_scanner.sh -b $ENGINE_URL -i 500 -w 2 -a $ENGINE_CREDS -p nmap-scan.json nmap'
+            archiveArtifacts 'job_nmap_result.json'
 
           },
           "Run Nikto Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 500 -w 2 -p nikto-scan.json nikto'
-            archiveArtifacts 'job__nikto_result.json,job__nmap_nikto.readable'
+            sh './run_scanner.sh -b $ENGINE_URL -i 500 -w 2 -a $ENGINE_CREDS -p nikto-scan.json nikto'
+            archiveArtifacts 'job_nikto_result.json'
 
           },
           "Run Arachni Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p arachni-scan-quick.json arachni'
-            archiveArtifacts 'job__arachni_result.json,job__arachni_result.readable'
+            sh './run_scanner.sh -b $ENGINE_URL -i 50000 -w 2 -a $ENGINE_CREDS -p arachni-scan-quick.json arachni'
+            archiveArtifacts 'job_arachni_result.json'
 
           },
           "Run Zap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL $ELASTIC_URL -i 50000 -w 2 -p zap-scan-long.json zap'
-            archiveArtifacts 'job__zap_result.json,job__zap_result.readable'
+            sh './run_scanner.sh -b $ENGINE_URL -i 50000 -w 2 -a $ENGINE_CREDS -p zap-scan-long.json'
+            archiveArtifacts 'job_zap_result.json'
 
           }
         )
@@ -45,7 +44,7 @@ pipeline {
   }
   environment {
     TARGET_HOST = 'bodgeit.secure-code-box.svc'
-    ENGINE_URL = 'http://engine-oss.secure-code-box.svc:8080'
-    ELASTIC_URL = 'http://elasticsearch.secure-code-box.svc:9200'
+    ENGINE_URL = 'http://engine.secure-code-box.svc:8080'
+    ENGINE_CREDS = credentials('scb-internal-dev-scanner-jenkins')
   }
 }

@@ -1,17 +1,18 @@
 [
   {
-    "name": "Quick Arachni Scan",
-    "location": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
-    "attributes": {
-      "ARACHNI_DOM_DEPTH_LIMIT": 5,
-      "ARACHNI_DIR_DEPTH_LIMIT": 3,
-      "ARACHNI_PAGE_LIMIT": 20,
-      "ARACHNI_EXCLUDE_PATTERNS": [
-        ".*public/images.*",
-        ".*/css.*"
-      ],
-      "ARACHNI_SCAN_METHODS": "*",
-      "ARACHNI_EXTEND_PATH": ["/admin"]
+    "name": "arachni",
+    "context": "bodgeit-arachni-quick-regular",
+    "target": {
+      "name": "BodgeIt",
+      "location": "http://bodgeit.secure-code-box.svc:8080/bodgeit/",
+      "attributes": {
+        "ARACHNI_DOM_DEPTH_LIMIT": 5,
+        "ARACHNI_DIR_DEPTH_LIMIT": 3,
+        "ARACHNI_PAGE_LIMIT": 20,
+        "ARACHNI_EXCLUDE_PATTERNS": [".*public/images.*", ".*/css.*"],
+        "ARACHNI_SCAN_METHODS": "*",
+        "ARACHNI_EXTEND_PATH": ["/admin"]
+      }
     }
   }
 ]
