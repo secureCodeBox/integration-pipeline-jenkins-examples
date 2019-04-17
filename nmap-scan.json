@@ -1,9 +1,13 @@
 [
-    {
-        "name": "Simple Port Scan  with NMAP",
-        "location": "juice-shop.secure-code-box.svc",
-        "attributes": {
-            "NMAP_PARAMETER": "-Pn"
-        }
+  {
+    "name": "nmap",
+    "context": "juiceshop-nmap-regular",
+    "target": {
+      "name": "JuiceShop",
+      "location": "juice-shop.secure-code-box.svc",
+      "attributes": {
+        "NMAP_PARAMETER": "-Pn"
+      }
     }
+  }
 ]

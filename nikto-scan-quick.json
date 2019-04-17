@@ -1,9 +1,13 @@
 [
-	{
-		"name" : "Generic WebHost Scan with Nikto",
-    	"location" : "juice-shop.secure-code-box.svc",
-        "attributes" : {
-            "NIKTO_PORTS" : "3000"
-        }
-	}
+  {
+    "name": "nikto",
+    "context": "juiceshop-nikto-regular",
+    "target": {
+      "name": "JuiceShop",
+      "location": "juice-shop.secure-code-box.svc",
+      "attributes": {
+        "NIKTO_PORTS": "3000"
+      }
+    }
+  }
 ]
