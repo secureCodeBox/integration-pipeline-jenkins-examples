@@ -34,7 +34,7 @@ pipeline {
 
           },
           "Run Zap Scan": {
-            sh './run_scanner.sh -b $ENGINE_URL -i 50000 -w 2 -a $ENGINE_CREDS -p zap-scan-long.json'
+            sh './run_scanner.sh -b $ENGINE_URL -i 50000 -w 2 -a $ENGINE_CREDS -p zap-scan-long.json zap'
             archiveArtifacts 'job_zap_result.json'
 
           }
